@@ -1,22 +1,22 @@
 import * as React from "react";
 import styled, { css } from "styled-components/native";
-import { TextInput, Image } from "react-native";
+import { Image } from "react-native";
 import { colors } from "@src/common/colors";
 import { Card } from "@src/common/components/Card";
 import images from "@src/assets/images";
 
 const Wrapper = styled.View`
     width: 90%;
-    position: absolute;
     top: -100px;
+    position: absolute;
     align-self: center;
+    z-index: 100;
+    overflow: visible;
 `;
 const debitcardStyles = css`
     width: 100%;
-    height: 220px;
+    min-height: 220px;
     border-radius: 10px;
-    z-index: 10;
-    elevation: 10;
     shadow-radius: 10px;
     background-color: ${colors.activeGreen};
     align-self: center;
@@ -31,6 +31,7 @@ const EyeViewWrapper = styled.TouchableOpacity`
     bottom: -8px;
     width: 150px;
     align-self: flex-end;
+
 `;
 const Row = styled.View`
     flex-flow: row;
@@ -46,11 +47,7 @@ const StatusText = styled.Text`
     font-size: 12px; 
     color: ${colors.activeGreen};
 `;
-const LogoText = styled.Text`
-    font-weight: 400; 
-    font-size: 18px; 
-    color: white;
-`;
+
 const NameText = styled.Text`
     font-weight: 600; 
     font-size: 22px; 
@@ -118,11 +115,8 @@ export class DebitCard extends React.PureComponent<CardProps, CardState> {
                 <Card styles={debitcardStyles}>
                     <MiniLogoRow>
                         <Image
-                            source={images.payments}
+                            source={images.aspireLogo}
                         />
-                        <LogoText>
-                            aspire
-                        </LogoText>
                     </MiniLogoRow>
                     <NameText>
                         Mark Henry

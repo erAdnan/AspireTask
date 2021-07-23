@@ -17,33 +17,35 @@ import DebitCard from "./debitcard";
 import HorizontalProgressBar from "./progressBar";
 
 const BackgroundScrollView = styled.ScrollView`
+    position: absolute;
+    width: 100%;
 `;
 
 const HeaderText = styled.Text`
-flex: 1;
-font-weight: 600; 
-font-size: 24px; 
-color: white
+    flex: 1;
+    font-weight: 600; 
+    font-size: 24px; 
+    color: white;
 `;
 const BalanceText = styled.Text`
-font-weight: 400; 
-font-size: 14px; 
-color: white;
+    font-weight: 400; 
+    font-size: 14px; 
+    color: white;
 `;
 const BalanceAmountText = styled.Text`
-font-weight: 600; 
-font-size: 24px; 
-color: white;
-margin-top: 10px;
-margin-left: 10px;
+    font-weight: 600; 
+    font-size: 24px; 
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
 `;
 const CurrencyText = styled.Text`
-font-weight: 600; 
-font-size: 12px; 
-color: white;
+    font-weight: 600; 
+    font-size: 12px; 
+    color: white;
 `;
 const TopWrapper = styled.View`
-flex: 1;
+    flex: 1;
     margin-left: 20px;
     padding-top: 20px;
     margin-right: 20px;
@@ -83,8 +85,6 @@ const SpendingLimitWrapper = styled.View`
     margin-left: 20px;
     padding-top: 10px;
     margin-right: 20px;
-    display: flex;
-    flex-flow: column;
 `;
 const SpendingLimitText = styled.Text`
     flex: 1;
@@ -100,7 +100,7 @@ const SpendingLimitValueText = styled.Text`
 
 const cardStyles = css`
     width: 100%;
-    padding-top: 160px;
+    padding-top: 200px;
     border-top-width: 1px;
     border-top-color: #e3e3e3;
     border-top-right-radius: 25px;
@@ -113,6 +113,7 @@ const cardStyles = css`
     shadow-radius: 10px;
     shadow-opacity: 0.5;
     overflow: visible;
+    margin-top: 300px;
 `;
 export interface HomeScreenProps {
     fetchData: () => void;
@@ -137,16 +138,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.blueBg,
     },
-    scrollStyle: {
-        paddingTop: 300,
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "transparent"
-    },
     scrollcontentStyle: {
-        width: "100%",
-        height: "100%",
+        flex: 1,
         alignItems: "center",
     }
 });
@@ -252,12 +245,10 @@ export class HomeScreen extends React.PureComponent<HomeScreenProps, HomeScreenS
                 </TopInfoWrapper>
                 <BackgroundScrollView
                     onLayout={this.onLayout}
-                    style={styles.scrollStyle}
                     contentContainerStyle={styles.scrollcontentStyle}
                 >
                     <>
                         <Card styles={cardStyles}>
-                            <DebitCard />
                             {this.props.showLimitProgress && (
                                 <SpendingLimitWrapper>
                                     <LogoWrapper>
@@ -291,6 +282,7 @@ export class HomeScreen extends React.PureComponent<HomeScreenProps, HomeScreenS
                                     );
                                 })
                             }
+                            <DebitCard />
                         </Card>
                     </>
                 </BackgroundScrollView>
